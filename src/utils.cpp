@@ -11,7 +11,7 @@ namespace utils
 
 cv::Mat laserScanToPointMat(const sensor_msgs::LaserScanConstPtr &scan)
 {
-  // TODO
+  cv::Mat matrix = 
 }
 
 cv::Mat transformPointMat(tf::Transform transform, cv::Mat &point_mat)

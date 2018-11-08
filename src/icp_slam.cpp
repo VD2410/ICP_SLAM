@@ -40,6 +40,8 @@ bool ICPSlam::track(const sensor_msgs::LaserScanConstPtr &laser_scan,
     return false;
   }
 
+
+
   // TODO: find the pose of laser in map frame
   // if a new keyframe is created, run ICP
   // if not a keyframe, obtain the laser pose in map frame based on odometry update
@@ -191,6 +193,10 @@ static tf::Transform icpRegistration(const sensor_msgs::LaserScanConstPtr &laser
 static tf::Transform icpIteration(cv::Mat &point_mat1,
                                     cv::Mat &point_mat2)
 {
+
+	// 1 mean of both the matrix
+	// 2 subtract mean from each point
+	//
 
 
 
