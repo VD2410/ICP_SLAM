@@ -176,5 +176,29 @@ void ICPSlam::vizClosestPoints(cv::Mat &point_mat1,
   cv::imwrite("/tmp/icp_laser.png", img);
 }
 
-} // namespace icp_slam
+}
 
+static tf::Transform icpRegistration(const sensor_msgs::LaserScanConstPtr &laser_scan1,
+                                       const sensor_msgs::LaserScanConstPtr &laser_scan2,
+                                       const tf::Transform &T_2_1)
+{
+
+
+
+
+}
+
+static tf::Transform icpIteration(cv::Mat &point_mat1,
+                                    cv::Mat &point_mat2)
+{
+
+
+
+
+}
+
+
+
+
+ // namespace icp_slam
+                                                                                            
