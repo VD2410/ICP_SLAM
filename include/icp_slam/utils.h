@@ -69,7 +69,7 @@ void meanAndStdDev(const std::vector<T> &vec, T &mean, T &std_dev)
     std_dev = 0;
     return;
   }
-
+ 
   // Calculate the mean
   mean = std::accumulate(vec.begin(), vec.end(), static_cast<T>(0.0)) / sz;
 

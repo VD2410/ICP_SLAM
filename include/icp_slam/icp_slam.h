@@ -60,11 +60,9 @@ public:
    * @param T_2_1 estimated transform from scan2 to scan1 (T_scan2_scan1)
    * @return refined T_scan2_scan1
    */
-  static tf::Transform icpRegistration(const cv::Mat &last_point_mat,
-                                       const cv::Mat &curr_point_mat,
+  static tf::Transform icpRegistration(const sensor_msgs::LaserScanConstPtr &laser_scan1,
+                                       const sensor_msgs::LaserScanConstPtr &laser_scan2,
                                        const tf::Transform &T_2_1);
-
-
 
   /**
    *
@@ -73,10 +71,7 @@ public:
    * @return estimated transform from scan2 to scan1 (T_scan2_scan1) that minimizes least square alignment error
    */
   static tf::Transform icpIteration(cv::Mat &point_mat1,
-                                    cv::Mat &point_mat2,
-                                    cv::Mat &x_mean,
-                                    cv::Mat &p_mean
-                                    );
+                                    cv::Mat &point_mat2);
 
   /**
    * @brief find closest indices in two matrix of 2d points (in the same coordinate frame)
@@ -100,13 +95,12 @@ public:
    */
   static void vizClosestPoints(cv::Mat &point_mat1,
                                cv::Mat &point_mat2,
-                               const tf::Transform &T_2_1,
-                               int iteration);
+                               const tf::Transform &T_2_1);
 
 
 
 protected:
-  cv::Mat last_kf_pc_mat_;     ///< last pointcloud matrix
+  sensor_msgs::LaserScanPtr last_kf_laser_scan_;     ///< laser scan of last kf
   tf::StampedTransform last_kf_tf_odom_laser_;    ///< Transform in odom frame of last keyframe
   tf::StampedTransform last_kf_tf_map_laser_;     ///< Transform in map frame of last keyframe
 
@@ -116,8 +110,6 @@ protected:
   double max_keyframes_time_;
 
   boost::atomic_bool is_tracker_running_;
-
-  //unsigned int keyframe_count_ = 0;
 
 }; // class ICPSlam
 } // namespace icp_slam
